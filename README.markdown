@@ -13,8 +13,7 @@ This Pandoc filter helps by formatting text based on the success or failure of c
 
 # Examples
 
-
-The following examples use `verify-claims.py` as a Pandoc filter at the command line:
+Wrap any claim you make in a link, give that link the class `claim`, and specify a shell command to run to verify the claim. Then use `verify-claims.py` as a Pandoc filter at the command line:
 
         $ pandoc --filter=./verify-claims.py README.markdown -o README.html
 
