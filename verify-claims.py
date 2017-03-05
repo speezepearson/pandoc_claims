@@ -12,6 +12,6 @@ def claim_filter(key, value, format, meta):
       if subprocess.call(claim_test_command, shell=True) == 0:
         return pandocfilters.Span((identifier, classes, attributes_list), content)
       else:
-        return pandocfilters.Strong([pandocfilters.Strikeout(content)])
+        return pandocfilters.Span((identifier, classes, attributes_list), [pandocfilters.Strong([pandocfilters.Strikeout(content)])])
 
 pandocfilters.toJSONFilter(claim_filter)
