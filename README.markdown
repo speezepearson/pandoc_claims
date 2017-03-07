@@ -2,18 +2,18 @@
 
 In technical and scientific writing, it's respectable to support a document's claims by supplying evidence; often this evidence takes the form of computer code. For example, here are three claims that should be supported by evidence:
 
-- "Our data shows an increasing trend in spray-cheese sales." 
+- "Our data shows an increasing trend in spray-cheese sales."
     - *(What code revealed this increasing trend?)*
-- "Our technique outperforms all others." 
+- "Our technique outperforms all others."
     - *(What code did you run on your technique to conclude this?)*
-- "In Linux, `/dev/null` appears an as empty file." 
+- "In Linux, `/dev/null` appears an as empty file."
     - *(What code demonstrates this?)*
 
-This Pandoc filter helps by formatting text based on the success or failure of code tests that you associate with the text. 
+This Pandoc filter helps by formatting text based on the success or failure of code tests that you associate with the text.
 
 # Examples
 
-Wrap any claim you make in a link, and give that link a `claim` attribute, which specifies a shell command to run to verify the claim.Then use `verify-claims.py` as a Pandoc filter at the command line:
+Wrap any claim you make in a link, and give that link a `claim` attribute, which specifies a shell command to run to verify the claim. Then use `verify-claims.py` as a Pandoc filter at the command line:
 
         $ pandoc --filter=./verify-claims.py README.markdown -o README.html
 
@@ -23,7 +23,7 @@ Pandoc renders the Markdown text
 
     [Our technique outperforms all others.](){claim="./check-we-are-the-best.sh"}
 
-as 
+as
 
 ![](Images/success.png)
 
@@ -65,7 +65,7 @@ The file `state-median-home-prices.csv` contains the median home price in $USD f
     120560 AR
     ...
 
-Consider the folowing claims: 
+Consider the following claims:
 
 - "Hawaii has the highest median home prices of any state."
 - "The median home price in Hawaii exceeds $450,000."
@@ -85,4 +85,3 @@ Pandoc renders this as
 ![](Images/home-prices.png)
 
 so it is readily apparent that the last claim is not supported by the data.
-
