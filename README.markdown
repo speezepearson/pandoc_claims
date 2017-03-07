@@ -13,7 +13,7 @@ This Pandoc filter helps by formatting text based on the success or failure of c
 
 # Examples
 
-Wrap any claim you make in a link, give that link the class `claim`, and specify a shell command to run to verify the claim. Then use `verify-claims.py` as a Pandoc filter at the command line:
+Wrap any claim you make in a link, and give that link a `claim` attribute, which specifies a shell command to run to verify the claim.Then use `verify-claims.py` as a Pandoc filter at the command line:
 
         $ pandoc --filter=./verify-claims.py README.markdown -o README.html
 
@@ -21,7 +21,7 @@ Wrap any claim you make in a link, give that link the class `claim`, and specify
 
 Pandoc renders the Markdown text
 
-    [Our technique outperforms all others.](){.claim cmd="./check-we-are-the-best.sh"}
+    [Our technique outperforms all others.](){claim="./check-we-are-the-best.sh"}
 
 as 
 
@@ -39,7 +39,7 @@ depending on whether the program `check-we-are-the-best.sh` completes with exit 
 
 The (true) claim "The file `/dev/null` contains 0 characters" would be written in Markdown as
 
-    [The file `/dev/null` contains 0 characters.](){.claim cmd="test $(wc -c </dev/null) = 0"}
+    [The file `/dev/null` contains 0 characters.](){claim="test $(wc -c </dev/null) = 0"}
 
 and rendered normally:
 
@@ -47,7 +47,7 @@ and rendered normally:
 
 However, the opposite (false) statement "The file `/dev/null` is non-empty" would be written in Markdown
 
-    [The file `/dev/null` is non-empty.](){.claim cmd="test $(wc -c </dev/null) -ne 0"}
+    [The file `/dev/null` is non-empty.](){claim="test $(wc -c </dev/null) -ne 0"}
 
 and render with a strikethrough indicating its falsehood:
 
@@ -74,16 +74,15 @@ Consider the folowing claims:
 
 You can link the data to the claims by writing your claims in Markdown like this:
 
-    ["Hawaii has the highest median home prices of any state."](){.claim cmd="test $(cat Examples/state-median-home-prices.csv | sort -n | tail -n 1 | cut -d' ' -f 2) = 'HI'"}
+    ["Hawaii has the highest median home prices of any state."](){claim="test $(cat Examples/state-median-home-prices.csv | sort -n | tail -n 1 | cut -d' ' -f 2) = 'HI'"}
 
-    ["The median home price in Hawaii exceeds $450,000."](){.claim cmd="test $(cat Examples/state-median-home-prices.csv | sort -n | tail -n 1 | cut -d" " -f 1) -gt 450000"}
+    ["The median home price in Hawaii exceeds $450,000."](){claim="test $(cat Examples/state-median-home-prices.csv | sort -n | tail -n 1 | cut -d" " -f 1) -gt 450000"}
 
-    ["The median home price in Hawaii exceeds $500,000."](){.claim cmd="test $(cat Examples/state-median-home-prices.csv | sort -n | tail -n 1 | cut -d" " -f 1) -gt 500000"}
+    ["The median home price in Hawaii exceeds $500,000."](){claim="test $(cat Examples/state-median-home-prices.csv | sort -n | tail -n 1 | cut -d" " -f 1) -gt 500000"}
 
 Pandoc renders this as
 
 ![](Images/home-prices.png)
 
 so it is readily apparent that the last claim is not supported by the data.
-
 
