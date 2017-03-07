@@ -76,9 +76,9 @@ You can link the data to the claims by writing your claims in Markdown like this
 
     ["Hawaii has the highest median home prices of any state."](){claim="test $(cat Examples/state-median-home-prices.csv | sort -n | tail -n 1 | cut -d' ' -f 2) = 'HI'"}
 
-    ["The median home price in Hawaii exceeds $450,000."](){claim="test $(cat Examples/state-median-home-prices.csv | sort -n | tail -n 1 | cut -d" " -f 1) -gt 450000"}
+    ["The median home price in Hawaii exceeds $450,000."](){claim="test $(cat Examples/state-median-home-prices.csv | sort -n | tail -n 1 | cut -d' ' -f 1) -gt 450000"}
 
-    ["The median home price in Hawaii exceeds $500,000."](){claim="test $(cat Examples/state-median-home-prices.csv | sort -n | tail -n 1 | cut -d" " -f 1) -gt 500000"}
+    ["The median home price in Hawaii exceeds $500,000."](){claim="test $(cat Examples/state-median-home-prices.csv | sort -n | tail -n 1 | cut -d' ' -f 1) -gt 500000"}
 
 Pandoc renders this as
 
