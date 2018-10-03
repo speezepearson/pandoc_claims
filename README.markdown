@@ -85,3 +85,7 @@ Pandoc renders this as
 ![](Images/home-prices.png)
 
 so it is readily apparent that the last claim is not supported by the data.
+
+# Credits
+
+Inspired by <https://github.com/jtoman/claims>.
